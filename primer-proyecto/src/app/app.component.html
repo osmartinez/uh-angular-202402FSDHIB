@@ -1,0 +1,10 @@
+
+<h1>Hola {{nombre}}</h1>
+
+<app-padre [color]="'orange'" [contador]="numero"></app-padre>
+
+<h2>{{numero}}</h2>
+<button (click)="sumar()">+</button>
+<button (click)="restar()">-</button>
+
+<router-outlet />

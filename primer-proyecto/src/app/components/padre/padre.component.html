@@ -1,0 +1,18 @@
+<div class="padre">
+    <h1>Componente padre {{contador}}</h1>
+
+    <!--componente hijo-->
+    <app-hijo 
+    [colorHijo]="color"
+    [contadorHijo]="contador" 
+    [nombre]="'hijo 1'">
+    </app-hijo>
+    
+    <app-hijo
+    [colorHijo]="'red'"
+    [nombre]="'hijo 2'"
+    [contadorHijo]="contador" 
+    >
+    </app-hijo>
+
+</div>
