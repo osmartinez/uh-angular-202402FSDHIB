@@ -1,4 +1,5 @@
 <div>
-    <input placeholder="Introduce el texto de la tarea" type="text">
-    <button>➕</button>
+    <input [(ngModel)]="texto" placeholder="Introduce el texto de la tarea" type="text">
+    <button (click)="enviarTarea()">➕</button>
+    {{texto}}
 </div>

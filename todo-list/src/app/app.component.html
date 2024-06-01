@@ -1,6 +1,6 @@
 
-<app-input-task></app-input-task>
+<app-input-task (onEnviarTarea)="tareaRecibida()"></app-input-task>
 
-<app-list-tasks></app-list-tasks>
+<app-list-tasks [listaTareas]="listaTareas"></app-list-tasks>
 
 <router-outlet />
