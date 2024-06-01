@@ -20,6 +20,14 @@ export class AppComponent {
     
   ];
 
+  get totalTareas(){
+    return this.listaTareas.length
+  }
+
+  get totalTareasChecked(){
+    return this.listaTareas.filter(x=>x.estado === true).length
+  }
+
   tareaRecibida(msg: string){
     this.listaTareas.push({texto: msg, estado: false})
   }
@@ -27,6 +35,14 @@ export class AppComponent {
   tareaEliminada(msg: Task){
     const i =  this.listaTareas.findIndex(x=> x.texto === msg.texto)
     this.listaTareas.splice(i,1)
+  }
+
+  tareaCambiada(msg: Task){
+    for(const tarea of this.listaTareas){
+      if(tarea.texto === msg.texto){
+        tarea.estado = !tarea.estado
+      }
+    }
   }
 }
 

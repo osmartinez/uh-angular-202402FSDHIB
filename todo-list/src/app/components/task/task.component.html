@@ -1,5 +1,5 @@
 <li>
-    <input [checked]="item.estado" type="checkbox">
+    <input (change)="cambiarTarea()" [checked]="item.estado" type="checkbox">
     <button (click)="eliminar()">🗑️</button>
     <span 
     [style]="{textDecoration: (item.estado === true? 'line-through' : 'none')}">

@@ -1,6 +1,19 @@
 
+<h1>{{totalTareas}} tareas</h1>
+<h2>{{totalTareasChecked}} tareas hechas</h2>
+
+@if(listaTareas.length === totalTareasChecked){
+    <h3 class="finished">Has realizado todas las tareas</h3>
+}
+@else{
+    <h3 class="not-finished">Todavía quedan tareas por hacer</h3>
+}
+
 <app-input-task (onEnviarTarea)="tareaRecibida($event)"></app-input-task>
 
-<app-list-tasks (onEliminarTask)="tareaEliminada($event)" [listaTareas]="listaTareas"></app-list-tasks>
+<app-list-tasks 
+(onCambiarTarea)="tareaCambiada($event)"
+(onEliminarTask)="tareaEliminada($event)"
+[listaTareas]="listaTareas"></app-list-tasks>
 
 <router-outlet />

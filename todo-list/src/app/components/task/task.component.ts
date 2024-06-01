@@ -11,8 +11,13 @@ import { Task } from '../../interfaces/task';
 export class TaskComponent {
   @Input() item!: Task
   @Output() onEliminarTask = new EventEmitter<Task>()
+  @Output() onCambiarTarea = new EventEmitter<Task>()
 
   eliminar(){
     this.onEliminarTask.emit(this.item)
+  }
+
+  cambiarTarea(){
+    this.onCambiarTarea.emit(this.item)
   }
 }

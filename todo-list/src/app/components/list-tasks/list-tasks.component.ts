@@ -12,8 +12,13 @@ import { Task } from '../../interfaces/task';
 export class ListTasksComponent {
   @Input() listaTareas!: Task[]
   @Output() onEliminarTask = new EventEmitter<Task>()
+  @Output() onCambiarTarea = new EventEmitter<Task>()
   
   eliminarTask(task: Task){
     this.onEliminarTask.emit(task)
+  }
+
+  cambiarTarea(task: Task){
+    this.onCambiarTarea.emit(task)
   }
 }
