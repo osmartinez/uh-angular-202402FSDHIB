@@ -1,0 +1,13 @@
+<li>
+    <input [checked]="item.estado" type="checkbox">
+    <button>🗑️</button>
+    <span 
+    [style]="{textDecoration: (item.estado === true? 'line-through' : 'none')}">
+    {{item.texto}}
+    </span>
+</li>
+
+
+<!-- one way binding: javascript -> html  -->
+
+<!-- two way binding: javascsript <-> html -->

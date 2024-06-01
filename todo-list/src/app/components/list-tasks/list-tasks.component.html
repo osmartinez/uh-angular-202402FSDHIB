@@ -1,0 +1,10 @@
+<div class="list-box">
+    <ul class="list">
+        <!--app-task [item]="listaTareas[0]"></app-task>
+        <app-task [item]="listaTareas[1]"></app-task>
+        <app-task [item]="listaTareas[2]"></app-task-->
+        @for(t of listaTareas; track t){
+            <app-task [item]="t"></app-task>
+        }
+    </ul>
+</div>
