@@ -20,7 +20,13 @@ export class AppComponent {
     
   ];
 
-  tareaRecibida(){
-    console.log('tarea recibida!!')
+  tareaRecibida(msg: string){
+    this.listaTareas.push({texto: msg, estado: false})
+  }
+
+  tareaEliminada(msg: Task){
+    const i =  this.listaTareas.findIndex(x=> x.texto === msg.texto)
+    this.listaTareas.splice(i,1)
   }
 }
+

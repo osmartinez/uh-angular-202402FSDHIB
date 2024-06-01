@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../../interfaces/task';
 
 @Component({
@@ -10,4 +10,9 @@ import { Task } from '../../interfaces/task';
 })
 export class TaskComponent {
   @Input() item!: Task
+  @Output() onEliminarTask = new EventEmitter<Task>()
+
+  eliminar(){
+    this.onEliminarTask.emit(this.item)
+  }
 }

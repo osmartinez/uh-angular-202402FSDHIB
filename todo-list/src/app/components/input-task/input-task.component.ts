@@ -10,10 +10,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class InputTaskComponent {
   texto:string = ""
-  @Output() onEnviarTarea = new EventEmitter<string>()
+  @Output() onEnviarTarea: EventEmitter<string> = new EventEmitter<string>()
 
   enviarTarea(){
     console.log('tarea enviada...')
     this.onEnviarTarea.emit(this.texto)
+    this.texto = ""
   }
 }

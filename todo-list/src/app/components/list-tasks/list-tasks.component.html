@@ -4,7 +4,7 @@
         <app-task [item]="listaTareas[1]"></app-task>
         <app-task [item]="listaTareas[2]"></app-task-->
         @for(t of listaTareas; track t){
-            <app-task [item]="t"></app-task>
+            <app-task (onEliminarTask)="eliminarTask($event)" [item]="t"></app-task>
         }
     </ul>
 </div>

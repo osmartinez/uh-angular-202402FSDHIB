@@ -1,6 +1,6 @@
 <li>
     <input [checked]="item.estado" type="checkbox">
-    <button>🗑️</button>
+    <button (click)="eliminar()">🗑️</button>
     <span 
     [style]="{textDecoration: (item.estado === true? 'line-through' : 'none')}">
     {{item.texto}}
