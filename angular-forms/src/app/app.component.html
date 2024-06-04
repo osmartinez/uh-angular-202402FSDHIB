@@ -1,0 +1,61 @@
+
+<form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
+  <div>
+    <label for="">email</label>
+    <input formControlName="email" type="text">
+
+    @if(
+     formulario.get("email")?.errors){
+      <span>es requerido</span>
+    }
+
+  </div>
+  
+  <div>
+    <label for="">password</label>
+    <input formControlName="password" type="text">
+    @if(formulario.get("password")?.errors){
+      @if(formulario.get("password")?.errors!["noHayTexto"]){
+        <span>es requerido</span>
+      }
+
+      @if(formulario.get("password")?.errors!["debeContenerA"]){
+        <span>debe contener al menos  un caracter "a"</span>
+      }
+
+      @if(formulario.get("password")?.errors!["debeContener1"]){
+        <span>debe contener al menos  un caracter "1"</span>
+      }
+
+      @if(formulario.get("password")?.errors!["longMayor8"]){
+        <span>debe tener al menos 8 caracteres ({{formulario.get("password")?.value.length}})</span>
+      }
+    }
+  </div>
+
+  <div>
+    <label for="">Cantidad</label>
+    <input formControlName="cantidad" type="number">
+
+    @if(formulario.get("cantidad")?.errors){
+      @if(formulario.get("cantidad")?.errors!["required"]){
+        <span>es requerido</span>
+      }
+      @if(formulario.get("cantidad")?.errors!["min"]){
+        <span>no puede ser menor que 1</span>
+      }
+      @if(formulario.get("cantidad")?.errors!["max"]){
+        <span>no puede ser mayor que 999</span>
+      }
+    }
+  </div>
+
+  <button [disabled]="formulario.valid === false" type="submit">Login</button>
+
+</form>
+
+{{formulario.valid}}
+
+
+
+<router-outlet />

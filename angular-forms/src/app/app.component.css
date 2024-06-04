@@ -1,0 +1,17 @@
+div{
+    margin-bottom: 15px;
+}
+
+label{
+    display:block;
+}
+
+input{
+    display: block;
+}
+
+span{
+    color: red;
+    font-size: small;
+    display:block;
+}
