@@ -1,0 +1,7 @@
+<h1>Página de posts</h1>
+
+<section>
+    @for(post of posts; track post){
+        <app-single-post [post]="post"></app-single-post>
+    }
+</section>
