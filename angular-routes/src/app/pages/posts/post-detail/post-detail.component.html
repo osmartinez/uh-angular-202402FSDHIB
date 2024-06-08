@@ -1,12 +1,47 @@
-<p>post-detail works!</p>
-<h3>valor del parametro: {{parametro}}</h3>
+@if(error){
 
-@if(post === null){
-    <h4>Loading...</h4>
-}
-@else {
-    <h4>Datos del post</h4>
-    {{post.title}}
-    <br>
-    {{post.body}}
+    <h4>error 404</h4>
+
+} @else { 
+
+    @if(post === null){
+        <span>Loading...</span>
+    } @else {
+        <fieldset>
+            <legend>Datos del post</legend>
+            <h3>{{ post.title }}</h3>
+            <p>
+                {{ post.body }}
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Datos del creador</legend>
+            @if(user === null){
+                <div class="sk-info-user" ></div>
+                <div class="sk-info-user" ></div>
+                <div class="sk-info-user" ></div>
+                <div class="sk-info-user" ></div>
+                <div class="sk-info-user" ></div>
+            }
+            @else {
+                <label class="info-user"  for="">{{user.name}}</label> 
+                <label class="info-user" for="">{{user.username}}</label> 
+                <label class="info-user" for="">{{user.email}}</label> 
+                <label class="info-user" for="">{{user.phone}}</label> 
+                <label class="info-user" for="">{{user.website}}</label> 
+
+            }
+            
+        </fieldset>
+
+        <fieldset>
+            <legend>Comentarios</legend>
+            
+        </fieldset>
+
+
+        
+        
+    } 
 }

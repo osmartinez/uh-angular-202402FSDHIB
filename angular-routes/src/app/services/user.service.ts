@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,11 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
 
-  constructor() { }
+  url: string = "https://jsonplaceholder.typicode.com/users"
+
+  constructor(private http: HttpClient) { }
+
+  getById(id: number){
+    return this.http.get(`${this.url}/${id}`)
+  }
 }

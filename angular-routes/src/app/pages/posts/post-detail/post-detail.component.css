@@ -1,0 +1,12 @@
+.info-user{
+    display: block;
+}
+
+.sk-info-user{
+    width: 200px;
+    height: 15px;
+    background-image: linear-gradient(90deg, #ddd 0px, #ecebeb 40px,#ddd 80px);
+    margin-bottom: 3px;
+    border-radius: 5px;
+    
+}
