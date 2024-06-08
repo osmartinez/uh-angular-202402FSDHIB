@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from '../../../interfaces/user';
 import { UserService } from '../../../services/user.service';
 import { CommentService } from '../../../services/comment.service';
+import { PostComment } from '../../../interfaces/post-comment';
 
 @Component({
   selector: 'app-post-detail',
@@ -16,7 +17,8 @@ import { CommentService } from '../../../services/comment.service';
 export class PostDetailComponent {
   post: Post | null = null;
   user: User | null = null;
-  comments: Comment[] = []
+  comments: PostComment[] = []
+  loadingComments: boolean = false
   error: boolean = false;
   parametro: string | null = 'nada';
 
@@ -52,14 +54,16 @@ export class PostDetailComponent {
           });
           // fin obtener el usuario
 
+          this.loadingComments = true
           // paralelamente obtenemos los comentarios del post
           commentService.getByPostId(this.post.id).subscribe({
             next: (response)=>{
               // he obtenido los comentario, los guardo en la variable
-              this.comments = response as Comment[]
+              this.comments = response as PostComment[]
+              this.loadingComments = false
             },
             error: ()=>{
-    
+              this.loadingComments = false
             }
           })
           // fin obtener comentarios

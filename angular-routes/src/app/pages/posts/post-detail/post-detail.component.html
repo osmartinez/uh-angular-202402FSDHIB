@@ -36,7 +36,37 @@
         </fieldset>
 
         <fieldset>
-            <legend>Comentarios</legend>
+            <legend>Comentarios ({{comments.length}})</legend>
+
+            @if(loadingComments === true){
+                <div class="sk-comment">
+                    <div class="sk-comment-name"></div>
+                    <div class="sk-comment-body"></div>
+                    <div class="sk-comment-email"></div>
+                </div>
+                <div class="sk-comment">
+                    <div class="sk-comment-name"></div>
+                    <div class="sk-comment-body"></div>
+                    <div class="sk-comment-email"></div>
+                </div>
+                <div class="sk-comment">
+                    <div class="sk-comment-name"></div>
+                    <div class="sk-comment-body"></div>
+                    <div class="sk-comment-email"></div>
+                </div>
+            }
+            @else{
+                @for(comment of comments; track comment){
+                    <div class="comment">
+                        <strong>{{comment.name}}</strong>
+                        <p>{{comment.body}}</p>
+                        <span class="comment-email">{{comment.email}}</span>
+                    </div>
+                }
+            }
+            
+
+            
             
         </fieldset>
 
