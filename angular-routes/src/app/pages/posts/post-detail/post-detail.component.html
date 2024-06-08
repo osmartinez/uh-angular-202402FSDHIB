@@ -1,1 +1,12 @@
 <p>post-detail works!</p>
+<h3>valor del parametro: {{parametro}}</h3>
+
+@if(post === null){
+    <h4>Loading...</h4>
+}
+@else {
+    <h4>Datos del post</h4>
+    {{post.title}}
+    <br>
+    {{post.body}}
+}
