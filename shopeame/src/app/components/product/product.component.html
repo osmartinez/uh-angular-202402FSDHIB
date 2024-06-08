@@ -1,0 +1,20 @@
+<div class="h-100 card text-center">
+    <img class="mx-auto" [src]="product.image" width="200" height="200">
+    <div class="card-body">
+        <p class="card-text">{{product.description}}</p>
+        <span class="card-text h4">€{{product.price}}</span>
+        <div>
+            @for(star of estrellasEnteras; track star){
+                <i class="fa fa-star"></i>
+            }
+           
+            @if(estrellasEnteras.length < product.stars){
+                <i class="fa fa-star-half-stroke"></i>
+            }
+
+
+            {{product.stars}}
+            <a class="btn btn-outline-primary" [routerLink]="'gestion/'+product.id">Editar</a>
+        </div>
+    </div>
+</div>

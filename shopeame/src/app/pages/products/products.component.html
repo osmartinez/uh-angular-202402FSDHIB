@@ -1,0 +1,10 @@
+<h3>Listado de productos ({{products.length}})</h3>
+
+<ul class="row list-unstyled">
+    @for(product of products; track product){
+        <li class="col-md-6 col-sm-12 col-lg-3 my-1">
+            <app-product [product]="product"></app-product>
+        </li>
+
+    }
+</ul>
