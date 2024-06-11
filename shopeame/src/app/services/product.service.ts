@@ -12,5 +12,9 @@ export class ProductService {
   getAll(){
     return this.http.get(this.url)
   }
+
+  getById(id: number){
+    return this.http.get(`${this.url}/${id}`)
+  }
   
 }

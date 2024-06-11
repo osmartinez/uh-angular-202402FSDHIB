@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 })
 export class ProductComponent {
   @Input() product!: Product
+  @Input() editMode: boolean = false
 
   
   public get estrellasEnteras() : number[] {

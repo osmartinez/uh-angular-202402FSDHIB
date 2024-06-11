@@ -13,7 +13,7 @@ export const routes: Routes = [
         component: ProductsComponent,
     },
     {
-        path: "gestion",
+        path: "gestion/:id",
         component: AdminComponent
     }
 ];

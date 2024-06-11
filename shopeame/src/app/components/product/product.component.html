@@ -14,7 +14,12 @@
 
 
             {{product.stars}}
-            <a class="btn btn-outline-primary" [routerLink]="'gestion/'+product.id">Editar</a>
+            
+            @if(editMode===false){
+                <a class="btn btn-outline-primary" [routerLink]="'/gestion/'+product.id">Editar</a>
+            }
+            
+            
         </div>
     </div>
 </div>
