@@ -1,0 +1,97 @@
+<div class="row">
+  @if(vehicle){
+  <div class="col-md-5">
+    <div>
+      <img [src]="vehicle.image" width="350" alt="" />
+
+      <p>{{ vehicle.brand }} {{ vehicle.model }}</p>
+      <p>{{ vehicle.description }}</p>
+      <p>Modelo del año {{ vehicle.year }}</p>
+    </div>
+  </div>
+  <div class="col-md-1 col-lg-1 d-none d-md-block">
+    <div class="separador"></div>
+  </div>
+  <div class="d-block d-sm-none">
+    <hr />
+  </div>
+  <div class="col-md-5">
+    <form [formGroup]="form" action="">
+      <div class="mb-3">
+        <label class="form-label" for="">Fecha inicio</label>
+        <input formControlName="fechaInicio" class="form-control" type="date" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="">Fecha fin</label>
+        <input formControlName="fechaFin"  class="form-control" type="date" />
+      </div>
+
+      <div>
+        <p>
+          Tienes un código promocional?
+          <a
+            (click)="mostrarCodigoPromocional = !mostrarCodigoPromocional"
+            class="btn btn-danger btn-sm rounded-pill"
+          >
+            +
+          </a>
+        </p>
+      </div>
+
+      @if(mostrarCodigoPromocional){
+      <div class="mb-3">
+        <label class="form-label" for="">Código promocional</label>
+        <div class="input-group mb-3">
+            <input formControlName="codigoPromocional" class="form-control">
+            <button class="btn btn-outline-secondary" type="button" >
+               Validar
+                    <i class="fa fa-shopping-cart"></i>
+                
+                
+            </button>
+          </div>
+      </div>
+      }
+
+      <div class="mb-3 p-4 bg-secondary text-white rounded">
+        <div class="row">
+          <div class="col-md-6">
+            <span>Precio base</span>
+          </div>
+          <div class="col-md-6 text-end">
+            <span>{{ vehicle.pricePerDay | divisa }}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <span>Número de días</span>
+          </div>
+          <div class="col-md-6 text-end">
+            <span>x {{ numDias }}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <span>Descuento</span>
+          </div>
+          <div class="col-md-6 text-end">
+            <span>{{ 0 }}%</span>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Total</h4>
+          </div>
+          <div class="col-md-6 text-end">
+            <h4>{{ (vehicle.pricePerDay * numDias)|divisa}}</h4>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-success">Reservar</button>
+    </form>
+  </div>
+  }
+</div>

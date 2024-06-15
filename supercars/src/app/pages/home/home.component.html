@@ -1,0 +1,27 @@
+<h1>Catálogo de vehículos ({{ vehicles.length }})</h1>
+
+<ul class="row list-unstyled">
+    @for(vehicle of vehicles ; track vehicle){
+        <li class="col-md-6 col-sm-12 col-lg-3 my-1">
+            <div class="card h-100" >
+                <img [src]="vehicle.image" height="160"  class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{vehicle.brand}} {{vehicle.model}}</h5>
+                  <p class="card-text">{{vehicle.description}}</p>
+                  <p class="card-text">{{vehicle.pricePerDay | divisa}} por día</p>
+                  
+                  @if(vehicle.available){
+                    <a [routerLink]="'/rent/'+vehicle._id"  class="btn btn-outline-primary">Alquilar</a>
+                  }
+                  @else {
+                    <span class="sin-stock">Sin stock</span>
+                  }
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Modelo del año {{vehicle.year}}</small>
+                </div>
+              </div>
+        </li>
+    }
+  
+</ul>
