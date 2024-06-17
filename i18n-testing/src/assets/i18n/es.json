@@ -1,0 +1,22 @@
+{
+   "HOME":{
+    "NAVBAR":{
+        "CONTACTO":"Contacto",
+        "ACCESO": "Acceso",
+        "REGISTRO":"Registro"
+    },
+    "CUERPO":{
+        "BIENVENIDO":"Bienvenido"
+    }
+   },
+   "LOGIN":{
+    "NAVBAR":{
+        "ACCEDE": "Accede"
+    },
+    "FORMULARIO":{
+        "EMAIL": "Correo electronico",
+        "CLAVE": "Contraseña",
+        "ACCEDER": "Acceder"
+    }
+   }
+}
