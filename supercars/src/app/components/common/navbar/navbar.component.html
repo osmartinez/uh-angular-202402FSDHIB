@@ -9,12 +9,24 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/signup">Signup</a>
-          </li>
+
+          @if(authService.user === null){
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/signup">Signup</a>
+            </li>
+          }
+          @else {
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/me/my-bookings">Área privada</a>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" (click)="authService.deleteUser()">Logout</button>
+            </li>
+          }
+          
          
         </ul>
       </div>

@@ -1,1 +1,22 @@
-<p>my-bookings works!</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Fecha inicio</th>
+        <th scope="col">Fecha fin</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Descuento %</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{bookings[0].startDate.toLocaleDateString()}}</td>
+        <td>{{bookings[0].endDate.toLocaleDateString()}}</td>
+        <td>{{bookings[0].vehicle.brand}}</td>
+        <td>{{bookings[0].vehicle.model}}</td>
+        <td>{{bookings[0].price}}</td>
+        <td>{{bookings[0].discount}}</td>
+      </tr>
+    </tbody>
+  </table>
