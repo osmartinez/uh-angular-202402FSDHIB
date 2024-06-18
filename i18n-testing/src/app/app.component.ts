@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MiComponente1Component } from './components/mi-componente-1/mi-componente-1.component';
 
 
 export function HttpLoaderFactory(httpClient: HttpClient){
@@ -12,7 +13,7 @@ export function HttpLoaderFactory(httpClient: HttpClient){
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,TranslateModule],
+  imports: [RouterOutlet,TranslateModule, MiComponente1Component],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
