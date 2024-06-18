@@ -19,4 +19,12 @@ export class AuthService {
       }
     )
   }
+
+  login(email: string, pass: string){
+    return this.http.post(`${this.url}/login`,
+    {
+      email: email,
+      password: pass,
+    })
+  }
 }
