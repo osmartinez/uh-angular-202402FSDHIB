@@ -90,7 +90,12 @@
         </div>
       </div>
 
-      <button class="btn btn-success">Reservar</button>
+      @if(authService.user){
+        <button class="btn btn-success">Reservar</button>
+      }@else {
+        <div class="alert alert-danger"><i class="fa fa-circle-exclamation me-3"></i> <a routerLink="/login">Inicia sesión</a> para continuar con la reserva</div>
+      }
+      
     </form>
   </div>
   }

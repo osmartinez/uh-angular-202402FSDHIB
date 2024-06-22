@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Vehicle } from '../../interfaces/vehicle';
 import { VehicleService } from '../../services/vehicle.service';
 import { DivisaPipe } from '../../pipes/divisa.pipe';
@@ -10,11 +10,12 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-rent',
   standalone: true,
-  imports: [DivisaPipe, ReactiveFormsModule],
+  imports: [DivisaPipe, ReactiveFormsModule, RouterModule],
   templateUrl: './rent.component.html',
   styleUrl: './rent.component.css',
 })
@@ -27,7 +28,8 @@ export class RentComponent {
   constructor(
     private route: ActivatedRoute,
     private vehicleService: VehicleService,
-    private builder: FormBuilder
+    private builder: FormBuilder,
+    public authService: AuthService
   ) {
     this.form = builder.group({
       "fechaInicio": new FormControl(null, [Validators.required]),
