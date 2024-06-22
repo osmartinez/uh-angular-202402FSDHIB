@@ -31,7 +31,7 @@ export class LoginComponent {
     this.authService.login(email, pass).subscribe({
       next: (response)=>{
         const loginResponse: LoginResponse = response as LoginResponse
-        const user: User = { token: loginResponse.token}
+        const user: User = { token: loginResponse.token, id: loginResponse.id}
         this.authService.saveUser(user)
         this.router.navigateByUrl("/")
       },

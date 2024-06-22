@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Vehicle } from '../../interfaces/vehicle';
 import { VehicleService } from '../../services/vehicle.service';
 import { DivisaPipe } from '../../pipes/divisa.pipe';
@@ -13,6 +13,7 @@ import {
 import { AuthService } from '../../services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import { BookingFormData } from '../../interfaces/booking-form-data';
+import { BookingService } from '../../services/booking.service';
 
 @Component({
   selector: 'app-rent',
@@ -33,6 +34,8 @@ export class RentComponent implements OnDestroy {
     private builder: FormBuilder,
     public authService: AuthService,
     private cookieService: CookieService,
+    private bookingService: BookingService,
+    private router: Router
   ) {
     // abrir la cookie a ver si hay datos en el booking-form-data y sustituirlos en los null
     let data: BookingFormData = {startDate: null, endDate: null, promoCode: null}
@@ -85,6 +88,18 @@ export class RentComponent implements OnDestroy {
     else{
       return dias
     }
+ }
+
+ enviar(){
+  this.bookingService.saveBooking(this.vehicle!._id, this.form.value.fechaInicio,
+    this.form.value.fechaFin, this.numDias * this.vehicle!.pricePerDay, 0).subscribe({
+      next: ()=>{
+        this.router.navigateByUrl("/me/my-bookings")
+      },
+      error: ()=>{
+
+      }
+    })
  }
  
 }

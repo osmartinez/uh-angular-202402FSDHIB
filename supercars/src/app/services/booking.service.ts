@@ -18,7 +18,6 @@ export class BookingService {
   }
 
   saveBooking(
-    userId: string,
     vehicleId: string,
     sDate: string,
     eDate: string,
@@ -30,7 +29,6 @@ export class BookingService {
     });
 
     return this.http.post(this.url, {
-      user: userId,
       vehicle: vehicleId,
       startDate: sDate,
       endDate: eDate,
