@@ -20,8 +20,11 @@
     @for(booking of bookings; track booking){
     <tr>
       <td>
-        <button (click)="eliminar(booking._id)" class="btn btn-danger btn-sm">
+        <button [disabled]="!(booking.startDate | canCancel)" (click)="eliminar(booking._id)" class="btn btn-danger btn-sm me-1">
           <i class="fa fa-trash"></i>
+        </button>
+        <button [disabled]="!(booking.startDate | canCancel)" (click)="editar(booking._id)" class="btn btn-primary btn-sm">
+          <i class="fa fa-pencil"></i>
         </button>
       </td>
       <td>{{ booking.startDate | formatDate }}</td>

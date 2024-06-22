@@ -5,12 +5,13 @@ import { FormatDatePipe } from '../../../pipes/format-date.pipe';
 import { DivisaPipe } from '../../../pipes/divisa.pipe';
 import { AuthService } from '../../../services/auth.service';
 import Swal from "sweetalert2"
+import { CanCancelPipe } from '../../../pipes/can-cancel.pipe';
 
 
 @Component({
   selector: 'app-my-bookings',
   standalone: true,
-  imports: [FormatDatePipe,DivisaPipe],
+  imports: [FormatDatePipe,DivisaPipe,CanCancelPipe],
   templateUrl: './my-bookings.component.html',
   styleUrl: './my-bookings.component.css',
 })
@@ -65,5 +66,28 @@ export class MyBookingsComponent {
         
       }
     });
+  }
+
+  editar(bookingId: string){
+    const reservaEditar: Booking|undefined = this.bookings.find(x=>x._id === bookingId)
+    if(reservaEditar){
+      Swal.fire({
+      title: `Tu reserva del ${reservaEditar.vehicle.brand} ${reservaEditar.vehicle.model}`,
+      html: `<div>
+        <div>
+          <label class="form-label">Fecha inicio</label>
+          <input type="date" class="form-control">
+        </div>
+        <div>
+        <label class="form-label">Fecha fin</label>
+        <input type="date" class="form-control">
+      </div>
+      </div>`,
+      didClose: ()=>{
+        // update de la reserva
+      }
+      })
+    }
+    
   }
 }
