@@ -1,4 +1,12 @@
-<table class="table">
+
+@if(bookings.length === 0){
+  <div class="alert alert-warning">
+    <i class="fa fa-circle-info"></i>
+    No tienes reservas todavía
+  </div>
+}
+@else {
+  <table class="table">
     <thead>
       <tr>
         <th scope="col">Fecha inicio</th>
@@ -10,13 +18,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>{{bookings[0].startDate.toLocaleDateString()}}</td>
-        <td>{{bookings[0].endDate.toLocaleDateString()}}</td>
-        <td>{{bookings[0].vehicle.brand}}</td>
-        <td>{{bookings[0].vehicle.model}}</td>
-        <td>{{bookings[0].price}}</td>
-        <td>{{bookings[0].discount}}</td>
-      </tr>
+      @for(booking of bookings; track booking){
+        <tr>
+          <td>{{booking.startDate | formatDate}}</td>
+          <td>{{booking.endDate| formatDate }}</td>
+          <td>{{booking.vehicle.brand}}</td>
+          <td>{{booking.vehicle.model}}</td>
+          <td>{{booking.price}}</td>
+          <td>{{booking.discount}}</td>
+        </tr>
+      }
+      
     </tbody>
   </table>
+}

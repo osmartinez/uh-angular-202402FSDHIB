@@ -4,8 +4,8 @@ import { Vehicle } from "./vehicle";
 export interface Booking {
     user: User
     vehicle: Vehicle
-    startDate: Date
-    endDate: Date
+    startDate: string
+    endDate: string
     price: number
     discount: number
 }
