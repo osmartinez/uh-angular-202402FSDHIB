@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Vehicle } from '../../interfaces/vehicle';
 import { VehicleService } from '../../services/vehicle.service';
@@ -11,6 +11,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
+import { BookingFormData } from '../../interfaces/booking-form-data';
 
 @Component({
   selector: 'app-rent',
@@ -19,7 +21,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './rent.component.html',
   styleUrl: './rent.component.css',
 })
-export class RentComponent {
+export class RentComponent implements OnDestroy {
   parametro: string | null = null;
   vehicle: Vehicle | null = null;
   mostrarCodigoPromocional: boolean = false;
@@ -29,13 +31,20 @@ export class RentComponent {
     private route: ActivatedRoute,
     private vehicleService: VehicleService,
     private builder: FormBuilder,
-    public authService: AuthService
+    public authService: AuthService,
+    private cookieService: CookieService,
   ) {
+    // abrir la cookie a ver si hay datos en el booking-form-data y sustituirlos en los null
+    let data: BookingFormData = {startDate: null, endDate: null, promoCode: null}
+    if(cookieService.check("booking-form-data")){
+      data = JSON.parse(cookieService.get("booking-form-data"))
+    }
     this.form = builder.group({
-      "fechaInicio": new FormControl(null, [Validators.required]),
-      "fechaFin": new FormControl(null, [Validators.required]),
-      "codigoPromocional": new FormControl(null, []),
+      "fechaInicio": new FormControl(data.startDate, [Validators.required]),
+      "fechaFin": new FormControl(data.endDate, [Validators.required]),
+      "codigoPromocional": new FormControl(data.promoCode, []),
     });
+   
 
     route.paramMap.subscribe((params) => {
       this.parametro = params.get('id');
@@ -49,6 +58,18 @@ export class RentComponent {
         error: () => {},
       });
     }
+  }
+
+  ngOnDestroy(): void {
+    const data: BookingFormData = {
+      endDate: this.form.value.fechaFin,
+      startDate: this.form.value.fechaInicio,
+      promoCode: this.form.value.codigoPromocional
+    }
+
+    this.cookieService.set("booking-form-data", JSON.stringify(data))
+
+    //console.log("Adiós rent", this.form.value)
   }
 
  
