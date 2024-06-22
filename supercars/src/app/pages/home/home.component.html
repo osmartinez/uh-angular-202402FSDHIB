@@ -1,7 +1,13 @@
 <h1>Catálogo de vehículos ({{ vehicles.length }})</h1>
-
+<div class="input-group mb-3">
+  <span class="input-group-text">
+    <i class="fa fa-filter"></i>
+  </span>
+  <input [(ngModel)]="filtro" type="text" class="form-control" placeholder="Filtrar">
+</div>
+ 
 <ul class="row list-unstyled">
-    @for(vehicle of vehicles ; track vehicle){
+    @for(vehicle of (vehicles | filterVehicles: filtro) ; track vehicle){
         <li class="col-md-6 col-sm-12 col-lg-3 my-1">
             <div class="card h-100" >
                 <img [src]="vehicle.image" height="160"  class="card-img-top" alt="...">
