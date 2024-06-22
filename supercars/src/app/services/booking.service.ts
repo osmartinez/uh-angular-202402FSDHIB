@@ -13,7 +13,6 @@ export class BookingService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authService.user?.token}`,
     });
-
     return this.http.get(`${this.url}/user/${userId}`, { headers });
   }
 
@@ -35,5 +34,12 @@ export class BookingService {
       price: price,
       discount: discount,
     }, {headers});
+  }
+
+  deleteBoooking(bookingId: string){
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.authService.user?.token}`,
+    });
+    return this.http.delete(`${this.url}/${this.authService.user?.id}/${bookingId}`,{headers})
   }
 }

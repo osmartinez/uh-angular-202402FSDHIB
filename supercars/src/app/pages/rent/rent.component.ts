@@ -14,6 +14,7 @@ import { AuthService } from '../../services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import { BookingFormData } from '../../interfaces/booking-form-data';
 import { BookingService } from '../../services/booking.service';
+import Swal from "sweetalert2"
 
 @Component({
   selector: 'app-rent',
@@ -94,10 +95,25 @@ export class RentComponent implements OnDestroy {
   this.bookingService.saveBooking(this.vehicle!._id, this.form.value.fechaInicio,
     this.form.value.fechaFin, this.numDias * this.vehicle!.pricePerDay, 0).subscribe({
       next: ()=>{
-        this.router.navigateByUrl("/me/my-bookings")
+        Swal.fire({
+          title: "Reserva realizada",
+          text: `Tu ${this.vehicle!.brand} ${this.vehicle!.model} está listo`,
+          icon: "success",
+          timer: 2000,
+          didClose: ()=>{
+            this.router.navigateByUrl("/me/my-bookings")
+          }
+        })
+        
       },
       error: ()=>{
-
+        Swal.fire({
+          title: "Oops",
+          text: "Ha ocurrido un error con tu reserva",
+          icon: "error",
+          timer: 2000,
+          showConfirmButton: false,
+        })
       }
     })
  }

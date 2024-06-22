@@ -1,34 +1,37 @@
-
 @if(bookings.length === 0){
-  <div class="alert alert-warning">
-    <i class="fa fa-circle-info"></i>
-    No tienes reservas todavía
-  </div>
-}
-@else {
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Fecha inicio</th>
-        <th scope="col">Fecha fin</th>
-        <th scope="col">Marca</th>
-        <th scope="col">Modelo</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Descuento %</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for(booking of bookings; track booking){
-        <tr>
-          <td>{{booking.startDate | formatDate}}</td>
-          <td>{{booking.endDate| formatDate }}</td>
-          <td>{{booking.vehicle.brand}}</td>
-          <td>{{booking.vehicle.model}}</td>
-          <td>{{booking.price |divisa}}</td>
-          <td>{{booking.discount}}</td>
-        </tr>
-      }
-      
-    </tbody>
-  </table>
+<div class="alert alert-warning">
+  <i class="fa fa-circle-info"></i>
+  No tienes reservas todavía
+</div>
+} @else {
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Fecha inicio</th>
+      <th scope="col">Fecha fin</th>
+      <th scope="col">Marca</th>
+      <th scope="col">Modelo</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Descuento %</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(booking of bookings; track booking){
+    <tr>
+      <td>
+        <button (click)="eliminar(booking._id)" class="btn btn-danger btn-sm">
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+      <td>{{ booking.startDate | formatDate }}</td>
+      <td>{{ booking.endDate | formatDate }}</td>
+      <td>{{ booking.vehicle.brand }}</td>
+      <td>{{ booking.vehicle.model }}</td>
+      <td>{{ booking.price | divisa }}</td>
+      <td>{{ booking.discount }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
 }
